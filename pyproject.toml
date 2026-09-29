@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claims-intelligence-api"
+version = "0.1.0"
+description = "Local-first Insurance Claims Intelligence API PoC"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "uvicorn[standard]>=0.30,<1.0",
+    "sqlmodel>=0.0.22,<1.0",
+    "pydantic-settings>=2.6,<3.0",
+    "openai>=1.55,<3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9.0", "httpx>=0.27,<1.0", "ruff>=0.8,<1.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
